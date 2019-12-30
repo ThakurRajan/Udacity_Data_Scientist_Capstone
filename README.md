@@ -40,3 +40,5 @@ For Question 2,my decision to use 3 separate models to predict the effectiveness
 # 3. File Descriptions
 
 This repo contains 4 files. The report of my project is called 'Starbucks Capstone Challenge - Using Starbucks app user data to predict effective offers.ipynb'. The data used in the project is in the files portfolio.json, profile.json and transcript.json.
+
+### NOTE : Please note that size of Transcript json file is more that 25MB so I have uploaded in zipped folder.Please access the data accordingly
