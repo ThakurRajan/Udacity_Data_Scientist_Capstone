@@ -1,48 +1,63 @@
-# Udacity_Data_Scientist_Capstone
+# Udacity Data Scientist Nanodegree Capstone Project
 
 This repository has all the code and report for my Udacity Data Scientist Nanodegree Capstone project.
 
-# Capstone Project : Using Starbucks app user data to predict effective offers
+# Starbucks-Capstone
 
-### 1. Installations
-This project was written in Python, using Jupyter Notebook on Anaconda. The relevant Python packages for this project are as follows:
-
-* pandas
-* numpy
-* math
-* json
-* sklearn.model_selection (train_test_split module)
-* sklearn.preprocessing (StandardScaler, PolynomialFeatures)
-* from sklearn.tree (DecisionTreeClassifier,DecisionTreeRegressor)
-* sklearn.ensemble (RandomForestClassifier)
-* sklearn.metrics (mean_squared_error,classification_report)
-* sklearn.linear_model (Ridge)
-* time
-* sklearn.model_selection (GridSearchCV)
-* matplotlib
-
-# 2. Project Motivation
-
-This project is the Capstone project of my Data Scientist nanodegree with Udacity. As students in the nanodegree, we have the option to choose any dataset answer business questions. For the challenge, I have used Starbucks data which I have got it from github. It contains simulated data that mimics customer behavior on the Starbucks rewards mobile app.
-
-In this project, I use the data to answer 2 business questions:
-
-a. What are the main drivers of an effective offer on the Starbucks app?
-b. Could the data provided, namely offer characteristics and user demographics, predict whether a user would take up an offer?
-To answer the above 2 questions, I created 3 models for the data on the 3 offer types provided. The three offers are: Buy One Get One Free (BOGO), Discount (discount with purchase), and Informational (provides information about products).
-
-As a brief summary of my findings:
-
-For Question 1, the feature importance given by all 3 models were that the tenure of a member is the biggest predictor of the effectiveness of an offer. Further study would be able to indicate what average tenure days would result in an effective BOGO offer.
-
-For Question 2,my decision to use 3 separate models to predict the effectiveness of each offer type ended up with good accuracy for the 2 of the models (82.83% for BOGO and 87.35% for discount), while slightly less accurate performance for another informational offers (75.3%). However, I would regard 75% as acceptable in a business setting, as for informational offers, there is no cost involved to inform users of a product. Meanwhile, an 80% and above accuracy in a business setting would be acceptable to show offers to people, even if the model misclassifies a few, the overall revenue increase might justify the few mistakes.
-
-# 3. File Descriptions
-
-This repo contains 4 files. The report of my project is called 'Starbucks Capstone Challenge - Using Starbucks app user data to predict effective offers.ipynb'. The data used in the project is in the files portfolio.json, profile.json and transcript.json.
-
-# BLOG POST LINK:
-
+Blog post on Medium
 https://medium.com/@trajan951/effective-offer-on-the-starbucks-app-3545dc81567b
 
-### NOTE : Please note that size of Transcript json file is more that 25MB so I have uploaded in zipped folder.Please access the data accordingly
+# Install
+
+This project requires Python 3.x and the following Python libraries installed:
+
+* NumPy
+* Pandas
+* matplotlib
+* scikit-learn
+# Dataset overview
+
+The program used to create the data simulates how people make purchasing decisions and how those decisions are influenced by promotional offers. Each person in the simulation has some hidden traits that influence their purchasing patterns and are associated with their observable traits. People produce various events, including receiving offers, opening offers, and making purchases. As a simplification, there are no explicit products to track. Only the amounts of each transaction or offer are recorded. There are three types of offers that can be sent: buy-one-get-one (BOGO), discount, and informational. In a BOGO offer, a user needs to spend a certain amount to get a reward equal to that threshold amount. In a discount, a user gains a reward equal to a fraction of the amount spent. In an informational offer, there is no reward, but neither is there a requisite amount that the user is expected to spend. Offers can be delivered via multiple channels. The basic task is to use the data to identify which groups of people are most responsive to each type of offer, and how best to present each type of offer.
+
+# Problem Statement
+
+As stated above, the problem statement I am aiming to answer are to (1) Discover customer attributes and buying behaviour , and (2) how much someone will spend based on demographics and offer type. Using the data provided, I answer the above first question using charts for (Demographic data for each customer) and the second question using 3 classification supervised machine learning models, feeding in the data from three combine data (portfolio, profile, Transactional).
+
+# Data
+
+#### profile.json
+
+Rewards program users (17000 users x 5 fields)
+
+* gender: (categorical) M, F, O, or null
+* age: (numeric) missing value encoded as 118
+* id: (string/hash)
+* became_member_on: (date) format YYYYMMDD
+* income: (numeric)
+
+#### portfolio.json
+
+Offers sent during 30-day test period (10 offers x 6 fields)
+
+* reward: (numeric) money awarded for the amount spent
+* channels: (list) web, email, mobile, social
+* difficulty: (numeric) money required to be spent to receive reward
+* duration: (numeric) time for offer to be open, in days
+* offer_type: (string) bogo, discount, informational
+* id: (string/hash)
+
+#### transcript.json
+
+Event log (306648 events x 4 fields)
+
+* person: (string/hash)
+* event: (string) offer received, offer viewed, transaction, offer completed
+* value: (dictionary) different values depending on event type
+* offer id: (string/hash) not associated with any "transaction"
+* amount: (numeric) money spent in "transaction"
+* reward: (numeric) money gained from "offer completed"
+* time: (numeric) hours after start of test
+
+#### Results
+
+My analysis suggests that the resulting random forest model has an training data accuracy of 0.944 and an F1-score of 0.939. The test data set accuracy of 0.929 and F1-score of 0.931 suggests that the random forest model I constructed did not overfit the training data.
